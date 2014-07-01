@@ -80,7 +80,8 @@
         if (root >= 0) {
             result1 = (-b - Math.sqrt(root)) / (2 * a);
             result2 = (-b + Math.sqrt(root)) / (2 * a);
-            if (result1 >= leftX-this.radius && result2 <= rightX+this.radius) {
+            if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
+                this.y = topY - this.radius-1;
                 collideSpot[0] = 1;
             }
         }
@@ -92,7 +93,8 @@
         if (root >= 0) {
             result1 = (-b - Math.sqrt(root)) / (2 * a);
             result2 = (-b + Math.sqrt(root)) / (2 * a);
-            if (result1 >= topY-this.radius && result2 <= botY+this.radius) {
+            if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
+                this.x = rightX + this.radius+1;
                 collideSpot[1] = 1;
             }
         }
@@ -104,7 +106,8 @@
         if (root >= 0) {
             result1 = (-b - Math.sqrt(root)) / (2 * a);
             result2 = (-b + Math.sqrt(root)) / (2 * a);
-            if (result1 >= leftX-this.radius && result2 <= rightX+this.radius) {
+            if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
+                this.y = botY + this.radius+1;
                 collideSpot[2] = 1;
             }
         }
@@ -116,7 +119,8 @@
         if (root >= 0) {
             result1 = (-b - Math.sqrt(root)) / (2 * a);
             result2 = (-b + Math.sqrt(root)) / (2 * a);
-            if (result1 >= topY-this.radius && result2 <= botY+this.radius) {
+            if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
+                this.x = leftX - this.radius-1;
                 collideSpot[3] = 1;
             }
         }

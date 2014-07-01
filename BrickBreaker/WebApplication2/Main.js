@@ -4,7 +4,7 @@ var length = 1024;
 var height = 640;
 var gLoop;
 
-var bar = new Bar(100, 20, 10, (length - 100) / 2, 300);
+var bar = new Bar(100, 20, 10, (length - 100) / 2, 500);
 var ball = new Ball(bar.getX() + bar.getLength() / 2, bar.getY() - 10, 10, 10);
 
 var clear = function () {

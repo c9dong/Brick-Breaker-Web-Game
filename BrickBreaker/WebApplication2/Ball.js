@@ -17,6 +17,8 @@
 
     this.beginMoving = function (bar) {
         this.moveingAngle = Math.acos(bar.getSpeed() / this.speed);
+        this.movingAngle = 1;
+        //this.movingAngle = (this.moveingAngle + Math.PI * 4) % (Math.PI * 2);
         this.stationary = false;
     };
 
@@ -63,41 +65,62 @@
         var rightX = bar.getX() + bar.getLength();
         var topY = bar.getY();
         var botY = bar.getY() + bar.getWidth();
+
         var a;
         var b;
         var c;
+        var root;
         var result1;
         var result2;
         //top
         a = 1;
         b = -2 * this.x;
         c = this.x * this.x + (topY - this.y) * (topY - this.y) - this.radius * this.radius;
-        if (b * b - 2 * a * c >= 0) {
-
+        root = b * b - 4 * a * c;
+        if (root >= 0) {
+            result1 = (-b - Math.sqrt(root)) / (2 * a);
+            result2 = (-b + Math.sqrt(root)) / (2 * a);
+            if (result1 >= leftX-this.radius && result2 <= rightX+this.radius) {
+                collideSpot[0] = 1;
+            }
+        }
+        //right
+        a = 1;
+        b = -2 * this.y;
+        c = this.y * this.y + (rightX - this.x) * (rightX - this.x) - this.radius * this.radius;
+        root = b * b - 4 * a * c;
+        if (root >= 0) {
+            result1 = (-b - Math.sqrt(root)) / (2 * a);
+            result2 = (-b + Math.sqrt(root)) / (2 * a);
+            if (result1 >= topY-this.radius && result2 <= botY+this.radius) {
+                collideSpot[1] = 1;
+            }
+        }
+        //bottom
+        a = 1;
+        b = -2 * this.x;
+        c = this.x * this.x + (botY - this.y) * (botY - this.y) - this.radius * this.radius;
+        root = b * b - 4 * a * c;
+        if (root >= 0) {
+            result1 = (-b - Math.sqrt(root)) / (2 * a);
+            result2 = (-b + Math.sqrt(root)) / (2 * a);
+            if (result1 >= leftX-this.radius && result2 <= rightX+this.radius) {
+                collideSpot[2] = 1;
+            }
+        }
+        //left
+        a = 1;
+        b = -2 * this.y;
+        c = this.y * this.y + (leftX - this.x) * (leftX - this.x) - this.radius * this.radius;
+        root = b * b - 4 * a * c;
+        if (root >= 0) {
+            result1 = (-b - Math.sqrt(root)) / (2 * a);
+            result2 = (-b + Math.sqrt(root)) / (2 * a);
+            if (result1 >= topY-this.radius && result2 <= botY+this.radius) {
+                collideSpot[3] = 1;
+            }
         }
 
-        //var barCenterX = (bar.getLength()) / 2;
-        //var barCenterY = (bar.getWidth()) / 2;
-        //if (Math.abs(this.y - bar.getY()) <= (this.radius+barCenterY) && Math.abs(this.x - bar.getX()) <= (this.radius+barCenterX)) {
-        //    //console.log("hit");
-        //    if (this.movingAngle >= Math.PI && this.movingAngle <= 2 * Math.PI) {
-                
-        //    }
-        //}
-        //if (this.x + this.radius >= bar.getX() && this.x - this.radius <= bar.getX() + bar.getLength()) {
-        //    console.log("in bar");
-        //    if (this.movingAngle >= Math.PI && this.movingAngle <= 2 * Math.PI) {
-        //        if ((this.y + this.radius >= bar.getY()) && (this.y + this.radius <= bar.getY() + bar.getWidth())) {
-        //            this.y = bar.getY() - 1;
-        //            collideSpot[0] = 1;
-        //        }
-        //    } else {
-        //        if ((this.y - this.radius <= bar.getY + bar.getWidth()) && (this.y - this.radius >= bar.getY())) {
-        //            this.y = bar.getY() + bar.getWidth() + 1;
-        //            collideSpot[2] = 1;
-        //        }
-        //    }
-        //}
         return collideSpot;
     };
 

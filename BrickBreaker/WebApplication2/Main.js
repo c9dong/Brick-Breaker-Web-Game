@@ -6,7 +6,8 @@ var gLoop;
 
 var bar = new Bar(100, 20, 10, (length - 100) / 2, 500);
 var ball = new Ball(bar.getX() + bar.getLength() / 2, bar.getY() - 10, 10, 10);
-
+var b = new BaseBrick(100, 100, 100, 100);
+//console.log(b.getX());
 var clear = function () {
     ctx.fillStyle = "#d0e7f9";
     ctx.beginPath();
@@ -43,8 +44,9 @@ var gameLoop = function () {
     clear();
     bar.draw(ctx);
     ball.draw(ctx);
+    b.draw(ctx);
     bar.move(length,height);
-    ball.move(length, height, bar, null);
+    ball.move(length, height, bar, b);
     gLoop = setTimeout(gameLoop, 1000 / 50);
 };
 gameLoop();

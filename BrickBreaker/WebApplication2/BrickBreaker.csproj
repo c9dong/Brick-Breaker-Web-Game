@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="Ball.js" />
     <Content Include="Bar.js" />
+    <Content Include="BaseBrick.js" />
     <Content Include="GamePage.html" />
     <Content Include="Main.js" />
     <Content Include="Web.config" />

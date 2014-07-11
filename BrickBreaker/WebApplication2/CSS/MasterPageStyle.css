@@ -1,0 +1,17 @@
+﻿#HeadingBar{
+    height:100px;
+    width:100%;
+    background-color:darkcyan;
+    border: 2px,solid;
+    margin-bottom:5px;
+}
+
+#Title{
+    width:inherit;
+    height:inherit;
+    font-size:50px;
+    font-family:David;
+    text-align:center;
+    padding-top:28px;
+
+}

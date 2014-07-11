@@ -6,7 +6,7 @@
     this.visible = true;
     this.exist = true;
 
-    this.draw = function (ctx) {
+    BaseBrick.prototype.draw = function (ctx) {
         if (this.exist && this.visible) {
             ctx.fillStyle = "#000000";
             ctx.beginPath();
@@ -16,56 +16,57 @@
         }
     };
 
-    this.hit = function () {
+    BaseBrick.prototype.hit = function () {
         this.exist = false;
         this.visible = false;
     }
 
-    this.setLength = function (length) {
+    BaseBrick.prototype.setLength = function (length) {
         this.length = length;
     };
 
-    this.setHeight = function (height) {
+    BaseBrick.prototype.setHeight = function (height) {
         this.height = height;
     };
 
-    this.setSpeed = function (speed) {
+    BaseBrick.prototype.setSpeed = function (speed) {
         this.speed = speed;
     };
 
-    this.setMoving = function (moving) {
+    BaseBrick.prototype.setMoving = function (moving) {
         this.moving = moving;
     };
 
-    this.setVisible = function (visible) {
+    BaseBrick.prototype.setVisible = function (visible) {
         this.visible = visible;
     };
 
-    this.setExist = function (exist) {
+    BaseBrick.prototype.setExist = function (exist) {
         this.exist = exist;
     };
 
-    this.getLength = function () {
+    BaseBrick.prototype.getLength = function () {
         return this.length;
     };
 
-    this.getHeight = function () {
+    BaseBrick.prototype.getHeight = function () {
         return this.height;
     };
 
-    this.getX = function () {
+    BaseBrick.prototype.getX = function () {
         return this.x;
     };
 
-    this.getY = function () {
+    BaseBrick.prototype.getY = function () {
         return this.y;
     };
     
-    this.getVisible = function () {
+    BaseBrick.prototype.getVisible = function () {
         return this.visible;
     };
 
-    this.getExist = function () {
+    BaseBrick.prototype.getExist = function () {
         return this.exist;
     };
 }
+

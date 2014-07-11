@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="WebApplication2.MasterPage1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Brick Breaker Game Home Page</title>
+    <link rel="stylesheet" type="text/css" href="CSS/MasterPageStyle.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="HeadingBar">
+
+        <p id="Title">Brick Breaker Game</p>
+
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="body" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

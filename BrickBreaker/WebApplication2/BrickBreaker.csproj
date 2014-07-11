@@ -57,17 +57,34 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ball.js" />
-    <Content Include="Bar.js" />
-    <Content Include="BaseBrick.js" />
-    <Content Include="GamePage.html" />
-    <Content Include="Main.js" />
+    <Content Include="CSS\MasterPageStyle.css" />
+    <Content Include="JavaScript\Ball.js" />
+    <Content Include="JavaScript\Bar.js" />
+    <Content Include="JavaScript\BaseBrick.js" />
+    <Content Include="JavaScript\DoubleBrick.js" />
+    <Content Include="GamePage.aspx" />
+    <Content Include="JavaScript\Main.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePage.aspx.cs">
+      <DependentUpon>GamePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GamePage.aspx.designer.cs">
+      <DependentUpon>GamePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MasterPage.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

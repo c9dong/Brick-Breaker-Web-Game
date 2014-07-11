@@ -22,11 +22,11 @@
         this.stationary = false;
     };
 
-    this.move = function (width,height,bar,brick) {
+    this.move = function (width,height,bar,bricks) {
         if (this.stationary == false) {
             this.x += Math.cos(this.movingAngle) * this.speed;
             this.y -= Math.sin(this.movingAngle) * this.speed;
-            var collideSpot = this.collide(width, height, bar, brick);
+            var collideSpot = this.collide(width, height, bar, bricks);
             if (collideSpot[0] == 1 || collideSpot[2] == 1) {
                 this.movingAngle = (this.movingAngle * -1+4*Math.PI) % (2 * Math.PI);
                 //console.log(this.movingAngle);
@@ -40,24 +40,28 @@
         }
     };
 
-    this.collide = function (width, height, bar, brick) {
+    this.collide = function (width, height, bar, bricks) {
         var collideSpot = [0, 0, 0, 0]; //index 0 = top, index 1 = right, index 2 = bottom, index 3 = left
         //Bound Collide
         if (this.x-this.radius <= 0) {
             this.x = this.radius+1;
             collideSpot[3] = 1;
+            return collideSpot;
         }
         if (this.y-this.radius <= 0) {
             this.y = this.radius+1;
             collideSpot[0] = 1;
+            return collideSpot;
         }
         if (this.x + this.radius >= width) { 
             this.x = width - this.radius - 1;
             collideSpot[1] = 1;
+            return collideSpot;
         }
         if (this.y + this.radius >= height) {
             this.y = height - this.radius - 1;
             collideSpot[2] = 1;
+            return collideSpot;
         }
         /***************Bar Collide ******************/
         
@@ -83,6 +87,7 @@
             if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
                 this.y = topY - this.radius-1;
                 collideSpot[0] = 1;
+                return collideSpot;
             }
         }
         //right
@@ -96,6 +101,7 @@
             if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
                 this.x = rightX + this.radius+1;
                 collideSpot[1] = 1;
+                return collideSpot;
             }
         }
         //bottom
@@ -109,6 +115,7 @@
             if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
                 this.y = botY + this.radius+1;
                 collideSpot[2] = 1;
+                return collideSpot;
             }
         }
         //left
@@ -122,70 +129,77 @@
             if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
                 this.x = leftX - this.radius-1;
                 collideSpot[3] = 1;
+                return collideSpot;
             }
         }
 
-        //Brick Collide
-        if (brick.getExist()) {
-            leftX = brick.getX();
-            rightX = brick.getX() + brick.getLength();
-            topY = brick.getY();
-            botY = brick.getY() + brick.getHeight();
+        //bricks Collide
+        for (var i = 0; i < bricks.length; i++) {
+            if (bricks[i].getExist()) {
+                leftX = bricks[i].getX();
+                rightX = bricks[i].getX() + bricks[i].getLength();
+                topY = bricks[i].getY();
+                botY = bricks[i].getY() + bricks[i].getHeight();
 
-            //top
-            a = 1;
-            b = -2 * this.x;
-            c = this.x * this.x + (topY - this.y) * (topY - this.y) - this.radius * this.radius;
-            root = b * b - 4 * a * c;
-            if (root >= 0) {
-                result1 = (-b - Math.sqrt(root)) / (2 * a);
-                result2 = (-b + Math.sqrt(root)) / (2 * a);
-                if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
-                    this.y = topY - this.radius - 1;
-                    collideSpot[0] = 1;
-                    brick.hit();
+                //top
+                a = 1;
+                b = -2 * this.x;
+                c = this.x * this.x + (topY - this.y) * (topY - this.y) - this.radius * this.radius;
+                root = b * b - 4 * a * c;
+                if (root >= 0) {
+                    result1 = (-b - Math.sqrt(root)) / (2 * a);
+                    result2 = (-b + Math.sqrt(root)) / (2 * a);
+                    if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
+                        this.y = topY - this.radius - 1;
+                        collideSpot[0] = 1;
+                        bricks[i].hit();
+                        return collideSpot;
+                    }
                 }
-            }
-            //right
-            a = 1;
-            b = -2 * this.y;
-            c = this.y * this.y + (rightX - this.x) * (rightX - this.x) - this.radius * this.radius;
-            root = b * b - 4 * a * c;
-            if (root >= 0) {
-                result1 = (-b - Math.sqrt(root)) / (2 * a);
-                result2 = (-b + Math.sqrt(root)) / (2 * a);
-                if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
-                    this.x = rightX + this.radius + 1;
-                    collideSpot[1] = 1;
-                    brick.hit();
+                //right
+                a = 1;
+                b = -2 * this.y;
+                c = this.y * this.y + (rightX - this.x) * (rightX - this.x) - this.radius * this.radius;
+                root = b * b - 4 * a * c;
+                if (root >= 0) {
+                    result1 = (-b - Math.sqrt(root)) / (2 * a);
+                    result2 = (-b + Math.sqrt(root)) / (2 * a);
+                    if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
+                        this.x = rightX + this.radius + 1;
+                        collideSpot[1] = 1;
+                        bricks[i].hit();
+                        return collideSpot;
+                    }
                 }
-            }
-            //bottom
-            a = 1;
-            b = -2 * this.x;
-            c = this.x * this.x + (botY - this.y) * (botY - this.y) - this.radius * this.radius;
-            root = b * b - 4 * a * c;
-            if (root >= 0) {
-                result1 = (-b - Math.sqrt(root)) / (2 * a);
-                result2 = (-b + Math.sqrt(root)) / (2 * a);
-                if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
-                    this.y = botY + this.radius + 1;
-                    collideSpot[2] = 1;
-                    brick.hit();
+                //bottom
+                a = 1;
+                b = -2 * this.x;
+                c = this.x * this.x + (botY - this.y) * (botY - this.y) - this.radius * this.radius;
+                root = b * b - 4 * a * c;
+                if (root >= 0) {
+                    result1 = (-b - Math.sqrt(root)) / (2 * a);
+                    result2 = (-b + Math.sqrt(root)) / (2 * a);
+                    if (result1 >= leftX - this.radius && result2 <= rightX + this.radius) {
+                        this.y = botY + this.radius + 1;
+                        collideSpot[2] = 1;
+                        bricks[i].hit();
+                        return collideSpot;
+                    }
                 }
-            }
-            //left
-            a = 1;
-            b = -2 * this.y;
-            c = this.y * this.y + (leftX - this.x) * (leftX - this.x) - this.radius * this.radius;
-            root = b * b - 4 * a * c;
-            if (root >= 0) {
-                result1 = (-b - Math.sqrt(root)) / (2 * a);
-                result2 = (-b + Math.sqrt(root)) / (2 * a);
-                if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
-                    this.x = leftX - this.radius - 1;
-                    collideSpot[3] = 1;
-                    brick.hit();
+                //left
+                a = 1;
+                b = -2 * this.y;
+                c = this.y * this.y + (leftX - this.x) * (leftX - this.x) - this.radius * this.radius;
+                root = b * b - 4 * a * c;
+                if (root >= 0) {
+                    result1 = (-b - Math.sqrt(root)) / (2 * a);
+                    result2 = (-b + Math.sqrt(root)) / (2 * a);
+                    if (result1 >= topY - this.radius && result2 <= botY + this.radius) {
+                        this.x = leftX - this.radius - 1;
+                        collideSpot[3] = 1;
+                        bricks[i].hit();
+                        return collideSpot;
+                    }
                 }
             }
         }

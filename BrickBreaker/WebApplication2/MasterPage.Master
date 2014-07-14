@@ -11,16 +11,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="HeadingBar">
+        <div id="HeadingBar">
 
-        <p id="Title">Brick Breaker Game</p>
+            <p id="Title">Brick Breaker Game</p>
 
-    </div>
-    <div>
-        <asp:ContentPlaceHolder ID="body" runat="server">
-            
-        </asp:ContentPlaceHolder>
-    </div>
+        </div>
+        <div id="LeftBar">
+          
+        </div>
+        <div id="Content">
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="RightBar">
+         
+        </div>
     </form>
 </body>
 </html>
+

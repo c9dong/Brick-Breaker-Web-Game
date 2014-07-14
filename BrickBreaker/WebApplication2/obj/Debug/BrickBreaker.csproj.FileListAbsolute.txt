@@ -4,3 +4,7 @@ C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApp
 C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\obj\Debug\BrickBreaker.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\obj\Debug\WebApplication2.pdb
+C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\bin\EntityFramework.dll
+C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\bin\EntityFramework.xml
+C:\Users\User\Desktop\GitHub Projects\Brick-Breaker-Web-Game\BrickBreaker\WebApplication2\bin\EntityFramework.SqlServer.xml

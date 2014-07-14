@@ -4,10 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div id="content" style="height:640px; width:1024px">
 
-        <input id="UserNameBox" type="text" />
-        <input id="PasswordBox" type="text" />
-        <input id="SubmitBtn" type="button" value="Submit" />
-        <input id="ResetBtn" type="button" value="Reset" />
+        
+
+        <asp:TextBox ID="UserNameBox" runat="server" Text=""></asp:TextBox>
+        <asp:TextBox ID="PasswordBox" runat="server" Text=""></asp:TextBox>
+        <asp:Button ID="SubmitBtn" runat="server" Text="Submit" OnClick="onSubmitBtnClick"/>
+        <asp:Button ID="ResetBtn" runat="server" Text="Reset" OnClick="onResetBtnClick"/>
+
+        
 
     </div>
 </asp:Content>

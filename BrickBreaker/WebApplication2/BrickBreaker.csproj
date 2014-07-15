@@ -72,6 +72,7 @@
     <Content Include="JavaScript\DoubleBrick.js" />
     <Content Include="GamePage.aspx" />
     <Content Include="JavaScript\Main.js" />
+    <Content Include="LoginPage.aspx" />
     <Content Include="RegisterPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="GamePage.aspx.designer.cs">
       <DependentUpon>GamePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

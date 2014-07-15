@@ -16,20 +16,12 @@ namespace WebApplication2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //User u = new User();
-            //u.Create_Date = System.DateTime.Now;
-            //u.Password = "11111";
-            //u.User_Name = "David";
-
-            //PlayerEntities ctx = new PlayerEntities();
-            //ctx.Users.Add(u);
-            //ctx.SaveChanges();
 
         }
         protected void onSubmitBtnClick(Object sender, EventArgs e)
         {
-            userName = UserNameBox.Text.ToString();
-            password = PasswordBox.Text.ToString();
+            userName = UserNameBox.Value.ToString();
+            password = PasswordBox.Value.ToString();
             User newUser = new User();
             newUser.Create_Date = System.DateTime.Now;
             newUser.Password = password;
@@ -39,8 +31,8 @@ namespace WebApplication2
         }
         protected void onResetBtnClick(Object sender, EventArgs e)
         {
-            UserNameBox.Text = "";
-            PasswordBox.Text = "";
+            UserNameBox.Value = "";
+            PasswordBox.Value = "";
         }
     }
 }

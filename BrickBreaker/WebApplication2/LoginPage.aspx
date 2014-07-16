@@ -6,6 +6,6 @@
         <input id="UserNameBox" runat="server" type="text" />
         <input id="PasswordBox" runat="server" type="password" />
         <button id="LoginBtn" runat="server" onserverclick="onLoginBtnClick">Sign in</button>
-        <p id="WarningMessage" runat="server">Hi</p>
+        <p id="WarningMessage" runat="server"></p>
     </div>
 </asp:Content>

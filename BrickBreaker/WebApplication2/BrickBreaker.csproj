@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\MasterPageStyle.css" />
+    <Content Include="HomePage.aspx" />
     <Content Include="JavaScript\Ball.js" />
     <Content Include="JavaScript\Bar.js" />
     <Content Include="JavaScript\BaseBrick.js" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="GamePage.aspx.designer.cs">
       <DependentUpon>GamePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
